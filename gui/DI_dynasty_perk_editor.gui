@@ -1,13 +1,13 @@
 ### DYNASTY LEGACIES/Perk editor WINDOW
 
 window = {
-	name = "DI_dynasty_perk_editor"
+	name = "DI_dynasty_perk_editor_window"
 
     datacontext = "[GetVariableSystem]"
     datacontext = "[GetPlayer]"
     datacontext = "[GetPlayer.MakeScope.Var('DI_dynasty_selected').Dynasty]"
 
-    visible = "[And(GetVariableSystem.Exists('DI_dynasty_perks_editor_window_visible'), GetPlayer.MakeScope.Var('DI_dynasty_selected_char').Char.IsValid)]"
+    visible = "[And(GetVariableSystem.Exists('DI_dynasty_perk_editor_window_visible'), GetPlayer.MakeScope.Var('DI_dynasty_selected_char').Char.IsValid)]"
 
 
 	size = { 100% 100% }
