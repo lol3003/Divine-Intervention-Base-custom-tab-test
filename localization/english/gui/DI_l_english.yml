@@ -740,7 +740,7 @@
  DI_fe_replace_tenet_tooltip: "Click to choose a replacement for this doctrine group (if available)."
  DI_other_tenets_heading: "Other Doctrines"
  ### Legacy Editor
- DI_dynasy_perks_editor_heading: "Divine Intervention Leag" #Still Need to Finish
+ DI_dynasy_perks_editor_heading: "Divine Intervention Leagcy Perk Editor" #Still Need to Finish
  ### INTERACTIONS ###
  interaction_category_cheat_menu: "Divine Intervention" # category name
  DI_open_cheat_menu: "#color_yellow #bold (DI)#!#! Interactions On"

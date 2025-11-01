@@ -154,7 +154,7 @@ window = {
                             layoutpolicy_horizontal = expanding
                             text = DI_dynasty_perks_editor_window
 							onclick = "[GetScriptedGui('DI_dynasty_perks_select_char_init').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]" #Not Implemented
-							onclick = "[GetVariableSystem.Toggle('DI_dynasty_perks_editor_window_visible')]" #Not Implemented
+							onclick = "[GetVariableSystem.Toggle('DI_dynasty_perks_editor_window_visible')]" #Not Implemented 				#maybe Need to Make this windows Close/invisible 
 							tooltip = DI_dynasty_perks_editor_window_tt
                             button_ignore = none
                         }

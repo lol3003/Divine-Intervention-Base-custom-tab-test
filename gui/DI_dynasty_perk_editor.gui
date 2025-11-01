@@ -7,6 +7,8 @@ window = {
     datacontext = "[GetPlayer]"
     datacontext = "[GetPlayer.MakeScope.Var('DI_dynasty_selected').Dynasty]"
 
+    visible = "[And(GetVariableSystem.Exists('DI_dynasty_perks_editor_window_visible'), GetPlayer.MakeScope.Var('DI_dynasty_selected_char').Char.IsValid)]"
+
 
 	size = { 100% 100% }
 	parentanchor = center|hcenter
@@ -42,13 +44,13 @@ window = {
 
 			blockoverride "header_text"
 			{
-				text = "DI_dynasy_perks_editor_heading"
+				text = "DI_dynasy_perks_editor_heading" # Name at the top of the full size window
 			}
 
 			blockoverride "button_close"
 			{
 				name = "button_close"
-				onclick = "[DynastyView.Close]"
+				onclick = "[DI_Dynasty_Perk_Editor_View.Close]"
 				shortcut = "close_window"
 				tooltip = "CLOSE_TOOLTIP"
 			}
@@ -67,7 +69,7 @@ window = {
 					margin_left = 40
 					margin_top = 10
 
-					widget = {
+					widget = {                  # Guessing This displays Coat of arms, Modify this to show Character Selector to Modify The dynasty thats being Modified
 						coa_dynasty_medium = {
 							blockoverride "coa_button" {
 								alwaystransparent = yes
@@ -92,13 +94,13 @@ window = {
 									margin = { 3 0 }
 
 									text_single = {
-										text = "DYNASTY_VIEW_SHOW_RENOWN"
+										text = "DYNASTY_VIEW_SHOW_RENOWN" # May Not be Needed, This depends if i can add the perk While automatically offsetting costs and offsetting increasing costs, since the console command still does both of those.
 									}
 
 									expand = {}
 
 									text_single = {
-										text = "DYNASTY_VIEW_SHOW_LEGACY_COST"
+										text = "DYNASTY_VIEW_SHOW_LEGACY_COST" # May Not be Needed, This depends if i can add the perk While automatically offsetting costs and offsetting increasing costs, since the console command still does both of those.
 									}
 								}
 
@@ -109,15 +111,15 @@ window = {
 								progressbar_standard = {
 									name = "progress"
 									size = { 250 12 }
-									value = "[FixedPointToProgressbarValue(Dynasty.GetNextPerkProgress)]"
+									value = "[FixedPointToProgressbarValue(Dynasty.GetNextPerkProgress)]" # Could be interesting But should not go for player Dynasty
 									min = 0
-									tooltip = "DYNASTY_HOUSE_VIEW_PROGRESS_TOOLTIP"
+									tooltip = "DYNASTY_HOUSE_VIEW_PROGRESS_TOOLTIP" # Vanilla Locatization:  DYNASTY_HOUSE_VIEW_PROGRESS_TOOLTIP:0 "Progress: [dynasty_prestige_i][Dynasty.GetPrestige|V0]/
 								}
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									margin = { 3 0 }
-									text = "DYNASTY_VIEW_SHOW_LEGACIES"
+									text = "DYNASTY_VIEW_SHOW_LEGACIES"  # Vanilla Localization:  DYNASTY_VIEW_SHOW_LEGACIES:0 "Legacies: [DynastyView.GetTotalUnlockedPerks]"
 								}
 							}
 
@@ -125,7 +127,7 @@ window = {
 								layoutpolicy_vertical = expanding
 							}
 
-							vbox = {
+							vbox = {  # Should not be needed since i want to be able to Modify Legacies of all Pinned Characters
 								layoutpolicy_horizontal = expanding
 								margin_bottom = 7
 
@@ -172,9 +174,9 @@ window = {
 			# }
 
 			vbox = {
-				visible = "[LessThanOrEqualTo_int32(GetDataModelSize(DynastyView.GetLegacies), '(int32)7')]"
-				datamodel = "[DynastyView.GetLegacies]"
-				layoutpolicy_horizontal = expanding
+				visible = "[LessThanOrEqualTo_int32(GetDataModelSize(DynastyView.GetLegacies), '(int32)7')]" #Have Not quite Figured out what "DynastyView" is may need to implement a whole new DI_DynastyView for this to function Correctly
+				datamodel = "[DynastyView.GetLegacies]"                                                                     # Vanilla Implementation is in Window_Dynasty_House.gui
+				layoutpolicy_horizontal = expanding                                                                         # Can i use the Vanilla "GetLegacies"
 				margin_bottom = 60
 
 				spacing = 5
@@ -216,7 +218,7 @@ window = {
 }
 
 confirmation_popup = {
-	name = "dynasty_perk_confirmation_popup"
+	name = "dynasty_perk_confirmation_popup"  # Need to remove The Popup Completly since it should only add or remove easily on Left and Right click
 
 	blockoverride "extra_contents" {
 		fixedgridbox = {
@@ -274,7 +276,7 @@ confirmation_popup = {
 	}
 }
 
-types DynastyLegacies {
+types DynastyLegacies {   #Should be able to leave this completly vanilla, since but it should get all Dynasties available in game and maybe add an extra tiptool about left and right click
 	type hbox_legacy_item = hbox {
 		expand = {}
 
